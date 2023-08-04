@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.main-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    background-color: rgb(42, 74, 108);
+}
+.left-side-panel {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 10;
+}
+.top-panel {
+    grid-column-start: 3;
+    grid-column-end: 9;
+    grid-row-start: 1;
+    grid-row-end: 3;
+
+    background-color: rgb(163, 245, 224);
+}
+.main-panel {
+    grid-column-start: 3;
+    grid-column-end: 9;
+    grid-row-start: 3;
+    grid-row-end: 10;
+
+    background-color: rgb(220, 209, 153);
+
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.right-side-panel {
+    grid-column-start: 9;
+    grid-column-end: 11;
+    grid-row-start: 1;
+    grid-row-end: 10;
+}
+.book-card {
+    flex: 1 1 auto;
+
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 4px rgb(186, 179, 147),
+                2px 2px 1px 2px rgb(250, 246, 229) inset;
+}
