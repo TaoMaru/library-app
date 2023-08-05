@@ -14,5 +14,25 @@ function Book(title, author, numPages, haveRead) {
 };
 
 function addToCollection(book) {
-    bookCollection.append(book);
+    bookCollection.push(book);
 };
+
+function removeFromCollection(book) {
+    if(bookCollection.length > 0) {
+        for(let i = 0; i < bookCollection.length; i++) {
+            if(book.title = bookCollection[i].title) {
+                console.log('GOTTEM');
+            }
+        }
+    }
+};
+
+let book1 = new Book('A Wonderful Age', 'Bernard Tressel', 455, false);
+let book2 = new Book('Eleven Hands', 'Sarah Wylde', 123, false);
+let book3 = new Book('The Hand of Nostradamus', 'Phillip Green', 730, false);
+let book4 = new Book('Shocked Eyes', 'Heather Redding', 544, false);
+
+bookCollection.push(book1);
+bookCollection.push(book2);
+bookCollection.push(book3);
+bookCollection.push(book4);
