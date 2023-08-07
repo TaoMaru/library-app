@@ -7,6 +7,7 @@
 }
 .main-container {
     width: 100%;
+    min-height: 100vh;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(9, 1fr);
@@ -47,6 +48,8 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;*/
+    width: 100%;
+    
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -57,13 +60,19 @@
 
     background-color: rgb(171, 161, 109);
     border-radius: 10px;
-    box-shadow: 2px 2px 2px 4px rgb(186, 179, 147),
-                1px 2px 1px 2px rgb(250, 246, 229) inset;
+    box-shadow: 1px 1px 2px 2px rgb(186, 179, 147),
+                1px 1px 1px 2px rgb(250, 246, 229) inset;
     padding: 20px;
     position: relative;
 }
 .book-card:hover {
     background-color: rgb(204, 186, 99);
+}
+.book-title {
+    font-size: 18px;
+}
+.book-title, .book-author {
+    margin-bottom: 5px;
 }
 .remove-book-icon {
     content: url('./resources/book-remove.svg');
@@ -75,7 +84,7 @@
 }
 .top-panel {
     text-align: center;
-    padding: 10px;
+    padding: 20px;
 }
 .library-header, .library-book-icon {
     display: inline-block;
@@ -116,4 +125,31 @@
 .add-book-btn:hover {
     background-color: rgb(79, 125, 173);
     box-shadow: 1px 1px 2px 2px rgb(186, 179, 147);
+}
+.add-book-form {
+    position: absolute;
+    width: 40%;
+    height: auto;
+    padding: 20px;
+    z-index: 99;
+    background-color: rgb(163, 245, 224);
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 3px rgb(186, 179, 147);
+    margin-left: 8%;
+    margin-right: auto;
+}
+.form-row {
+    width: 100%;
+    display: inline-block;
+    padding: 5px;
+}
+.form-input {
+    width: 100%;
+}
+.submit-btn {
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+.add-book-hidden-form {
+    visibility: hidden;
 }
