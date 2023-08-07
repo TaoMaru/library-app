@@ -153,3 +153,14 @@
 .add-book-hidden-form {
     visibility: hidden;
 }
+.close-form-icon {
+    content: url(./resources/close-circle.svg);
+    width: 24px;
+    height: auto;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.close-form-icon:hover {
+    transform: scale(1.1);
+}

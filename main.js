@@ -4,6 +4,7 @@ const booksPanel = document.querySelector('.books-panel');
 const addBookBtn = document.querySelector('.add-book-btn');
 const addBookForm = document.querySelector('.add-book-form');
 const addBookSubmitBtn = document.querySelector('.submit');
+const closeFormBtn = document.querySelector('.close-form-icon');
 
 function Book(title, author, numPages, haveRead) {
     this.title = title
@@ -57,7 +58,7 @@ for(let i = 0; i < bookCollection.length; i++){
 
     bookCardTitle.textContent = bookCollection[i].title;
     bookCardAuthor.textContent = bookCollection[i].author;
-    
+
     newBookCard.appendChild(bookCardTitle);
     newBookCard.appendChild(bookCardAuthor);
     newBookCard.appendChild(removeBookBtn);
@@ -73,4 +74,4 @@ function hideAddBookForm() {
 }
 
 addBookBtn.addEventListener('click', showAddBookForm);
-addBookSubmitBtn.addEventListener('click', hideAddBookForm);
+closeFormBtn.addEventListener('click', hideAddBookForm);

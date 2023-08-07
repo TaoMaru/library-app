@@ -20,6 +20,7 @@
                     <p class="add-book-txt">Add a Book!</p>
                 </div>
                 <form class="add-book-form add-book-hidden-form" action="" method="get">
+                    <img class="close-form-icon">
                     <div class="form-row">
                         <label for="title">Title</label>
                         <input type="text" id="title" name="title" required class="form-input">
@@ -34,9 +35,9 @@
                     </div>
                     <fieldset class="has-read-form-row">
                         <legend>Have You Read this Title?</legend>
-                        <input type="radio" id="hasRead" class="has-read-radio">
+                        <input type="radio" id="hasRead" name="readStatus" class="has-read-radio" required>
                         <label for="hasRead">Yes</label>
-                        <input type="radio" id="hadNotRead" class="has-read-radio">
+                        <input type="radio" id="hasNotRead" name="readStatus" class="has-read-radio" checked>
                         <label for="hasNotRead">No</label>
                     </fieldset>
                     <div class="submit">
