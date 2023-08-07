@@ -23,14 +23,12 @@ function addToCollection(book) {
     bookCollection.push(book);
 };
 
-function removeFromCollection(book) {
+function removeFromCollection(evtTarget) {
+    let bookIndex = evtTarget.getAttribute("data-index-number");
     if(bookCollection.length > 0) {
-        for(let i = 0; i < bookCollection.length; i++) {
-            if(book.title = bookCollection[i].title) {
-                console.log('GOTTEM');
-            }
-        }
-    }
+        bookCollection = bookCollection.splice(bookIndex, 1);
+        booksPanel.removeChild(`${bookIndex}`);
+    };
 };
 
 let book1 = new Book('A Wonderful Age', 'Bernard Tressel', 455, false);
@@ -46,6 +44,7 @@ bookCollection.push(book4);
 for(let i = 0; i < bookCollection.length; i++){
     let newBookCard = document.createElement("div");
     newBookCard.className = "book-card";
+    newBookCard.setAttribute("data-index-number", `${i}`);
 
     let bookCardTitle = document.createElement("p");
     bookCardTitle.className = "book-title";
@@ -55,6 +54,7 @@ for(let i = 0; i < bookCollection.length; i++){
 
     let removeBookBtn = document.createElement("img");
     removeBookBtn.className = "remove-book-icon";
+    removeBookBtn.title = "Remove from library";
 
     bookCardTitle.textContent = bookCollection[i].title;
     bookCardAuthor.textContent = bookCollection[i].author;
@@ -75,3 +75,5 @@ function hideAddBookForm() {
 
 addBookBtn.addEventListener('click', showAddBookForm);
 closeFormBtn.addEventListener('click', hideAddBookForm);
+let removeBookBtn = document.querySelector('.remove-book-icon');
+removeBookBtn.addEventListener('click', removeFromCollection);
