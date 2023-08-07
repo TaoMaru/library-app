@@ -43,21 +43,24 @@
     grid-row-end: 10;
 }
 .books-panel {
-    display: flex;
+    /*display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 20px;*/
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
 }
 .book-card {
-    flex: 1 1 auto;
+    /*flex: 1 1 auto;*/
 
     background-color: rgb(171, 161, 109);
     border-radius: 10px;
     box-shadow: 2px 2px 2px 4px rgb(186, 179, 147),
-                2px 2px 1px 2px rgb(250, 246, 229) inset;
-
-    width: 30%;
-    height: auto;
+                1px 2px 1px 2px rgb(250, 246, 229) inset;
+    padding: 20px;
+    position: relative;
 }
 .book-card:hover {
     background-color: rgb(204, 186, 99);
@@ -66,6 +69,9 @@
     content: url('./resources/book-remove.svg');
     width: 24px;
     height: auto;
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
 }
 .top-panel {
     text-align: center;
@@ -85,8 +91,9 @@
 .add-book-btn {
     background-color: rgb(54, 101, 151);
     width: fit-content;
-    padding: 5px;
+    padding: 5px 10px 5px 10px;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 .add-book-icon, .add-book-txt {
     display: inline-block;
@@ -94,9 +101,19 @@
 .add-book-icon {
     content: url('./resources/book-plus.svg');
     width: 30px;
+    position: relative;
+    top: 5px;
 }
 .add-book-txt {
     font-size: 24px;
     color: rgb(250, 245, 220);
-    font-weight: bold;
+    font-weight: normal;
+}
+.remove-book-icon:hover{
+    transform: scale(1.1);
+    transition: .2sec;
+}
+.add-book-btn:hover {
+    background-color: rgb(79, 125, 173);
+    box-shadow: 1px 1px 2px 2px rgb(186, 179, 147);
 }

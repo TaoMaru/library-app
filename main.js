@@ -1,5 +1,7 @@
 let bookCollection = [];
 
+const booksPanel = document.querySelector('.books-panel');
+
 function Book(title, author, numPages, haveRead) {
     this.title = title
     this.author = author
@@ -36,3 +38,20 @@ bookCollection.push(book1);
 bookCollection.push(book2);
 bookCollection.push(book3);
 bookCollection.push(book4);
+
+for(let i = 0; i < bookCollection.length; i++){
+    let newBookCard = document.createElement("div");
+    newBookCard.className = "book-card";
+    let bookCardTitle = document.createElement("p");
+    bookCardTitle.className = "book-title";
+    let bookCardAuthor = document.createElement("P");
+    bookCardAuthor.className = "book-author";
+    let removeBookBtn = document.createElement("img");
+    removeBookBtn.className = "remove-book-icon";
+    bookCardTitle.textContent = bookCollection[i].title;
+    bookCardAuthor.textContent = bookCollection[i].author;
+    newBookCard.appendChild(bookCardTitle);
+    newBookCard.appendChild(bookCardAuthor);
+    newBookCard.appendChild(removeBookBtn);
+    booksPanel.appendChild(newBookCard);
+};
