@@ -23,12 +23,17 @@ function addToCollection(book) {
     bookCollection.push(book);
 };
 
-function removeFromCollection(evtTarget) {
-    let bookIndex = evtTarget.getAttribute("data-index-number");
-    if(bookCollection.length > 0) {
-        bookCollection = bookCollection.splice(bookIndex, 1);
-        booksPanel.removeChild(`${bookIndex}`);
-    };
+function removeFromCollection(evt) {
+    let parentElem = evt.target.parentElement;
+    let bookIndex = parentElem.dataset.indexnumber;
+    console.log(parentElem);
+    console.log(parentElem.dataset.indexnumber);
+    booksPanel.removeChild(parentElem);
+    let currBooks = document.querySelectorAll('.book-card');
+    let newIndex = 0;
+    currBooks.forEach((book) => {
+        console.log(book);
+    });
 };
 
 let book1 = new Book('A Wonderful Age', 'Bernard Tressel', 455, false);
@@ -44,7 +49,7 @@ bookCollection.push(book4);
 for(let i = 0; i < bookCollection.length; i++){
     let newBookCard = document.createElement("div");
     newBookCard.className = "book-card";
-    newBookCard.setAttribute("data-index-number", `${i}`);
+    newBookCard.setAttribute("data-indexnumber", `${i}`);
 
     let bookCardTitle = document.createElement("p");
     bookCardTitle.className = "book-title";
@@ -55,6 +60,7 @@ for(let i = 0; i < bookCollection.length; i++){
     let removeBookBtn = document.createElement("img");
     removeBookBtn.className = "remove-book-icon";
     removeBookBtn.title = "Remove from library";
+    removeBookBtn.addEventListener('click', removeFromCollection);
 
     bookCardTitle.textContent = bookCollection[i].title;
     bookCardAuthor.textContent = bookCollection[i].author;
@@ -73,7 +79,10 @@ function hideAddBookForm() {
     addBookForm.classList.add("add-book-hidden-form");
 }
 
+function printTarget(evt) {
+    console.log(evt.target.parentElement);
+}
+
 addBookBtn.addEventListener('click', showAddBookForm);
 closeFormBtn.addEventListener('click', hideAddBookForm);
-let removeBookBtn = document.querySelector('.remove-book-icon');
-removeBookBtn.addEventListener('click', removeFromCollection);
+
