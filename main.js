@@ -23,16 +23,58 @@ function addToCollection(book) {
     bookCollection.push(book);
 };
 
-function removeFromCollection(evt) {
+function removeBook(evt) {
     let parentElem = evt.target.parentElement;
     let bookIndex = parentElem.dataset.indexnumber;
-    console.log(parentElem);
-    console.log(parentElem.dataset.indexnumber);
-    booksPanel.removeChild(parentElem);
+    removeFromBookPanel(parentElem);
+    assignIndexNumber();
+    removeFromCollection(bookIndex);
+};
+
+function removeFromBookPanel(bookElem) {
+    console.log(bookElem);
+    booksPanel.removeChild(bookElem);
     let currBooks = document.querySelectorAll('.book-card');
-    let newIndex = 0;
     currBooks.forEach((book) => {
         console.log(book);
+    });
+};
+
+function removeFromCollection(indexToRemove) {
+    let newCollection = [];
+    console.log(`index of removed book: ${indexToRemove}`);
+    if(indexToRemove === 0){
+        for(let i = 0; i < bookCollection.length; i++){
+            console.log(bookCollection[i]);
+            newCollection[i] = bookCollection[i];
+            console.log(newCollection);
+        };
+    }else{
+        for(let i = 0; i < indexToRemove; i++){
+            console.log(bookCollection[i]);
+            newCollection[i] = bookCollection[i];
+            console.log(newCollection);
+        };
+        for(let i = indexToRemove + 1; i < bookCollection.length; i++){
+            newCollection[i - 1] = bookCollection[i];
+            console.log(bookCollection[i]);
+        };
+    };
+
+    bookCollection.length = newCollection.length;
+    console.log(`length of new array: ${bookCollection.length}`);
+    for(let i = 0; i < bookCollection.length; i++){
+        bookCollection[i] = newCollection[i];
+    };
+    console.log(bookCollection);
+};
+
+function assignIndexNumber() {
+    let bookCards = document.querySelectorAll('.book-card');
+    let newIndex = 0;
+    bookCards.forEach((bookCard) => {
+        bookCard.dataset.indexnumber = newIndex;
+        newIndex += 1;
     });
 };
 
@@ -60,7 +102,7 @@ for(let i = 0; i < bookCollection.length; i++){
     let removeBookBtn = document.createElement("img");
     removeBookBtn.className = "remove-book-icon";
     removeBookBtn.title = "Remove from library";
-    removeBookBtn.addEventListener('click', removeFromCollection);
+    removeBookBtn.addEventListener('click', removeBook);
 
     bookCardTitle.textContent = bookCollection[i].title;
     bookCardAuthor.textContent = bookCollection[i].author;
