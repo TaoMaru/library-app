@@ -103,6 +103,7 @@ function assignIndexNumber() {
     });
 };
 
+/*
 let book1 = new Book('A Wonderful Age', 'Bernard Tressel', 455, false);
 let book2 = new Book('Eleven Hands', 'Sarah Wylde', 123, false);
 let book3 = new Book('The Hand of Nostradamus', 'Phillip Green', 730, false);
@@ -137,6 +138,7 @@ for(let i = 0; i < bookCollection.length; i++){
     newBookCard.appendChild(removeBookBtn);
     booksPanel.appendChild(newBookCard);
 };
+*/
 
 function showAddBookForm() {
     addBookForm.classList.remove("add-book-hidden-form");
@@ -157,10 +159,8 @@ closeFormBtn.addEventListener('click', hideAddBookForm);
 addBookForm.addEventListener('submit', (e) => {
     e.preventDefault();
     let formData = new FormData(addBookForm);
-    //let newBook = new Book('', '', 0, false);
     let newBookEntries = [];
     for(let dataEntry of formData.entries()) {
-        console.log(dataEntry);
         newBookEntries.push(dataEntry[1]);
     };
     createNewBook(newBookEntries);
