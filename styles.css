@@ -88,11 +88,14 @@
 }
 .library-header, .library-book-icon {
     display: inline-block;
+    margin-top: 20px;
 }
 .library-book-icon {
     content: url('./resources/book-open-page-variant.svg');
     width: 40px;
     height: auto;
+    position: relative;
+    top: 5px;
 }
 .library-header {
     font-size: 36px;
@@ -163,4 +166,31 @@
 }
 .close-form-icon:hover {
     transform: scale(1.1);
+}
+
+@media screen and (max-width: 500px) {
+    .top-panel {
+        grid-column-start: 1;
+        grid-column-end: 11;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    
+        background-color: rgb(163, 245, 224);
+    }
+    .main-panel {
+        grid-column-start: 1;
+        grid-column-end: 11;
+        grid-row-start: 3;
+        grid-row-end: 10;
+    
+        background-color: rgb(220, 209, 153);
+
+        padding: 20px;
+    }
+    .books-panel {
+        grid-template-columns: none;
+    }
+    .add-book-form {
+        width: 75%;
+    }
 }
