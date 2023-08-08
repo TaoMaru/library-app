@@ -23,6 +23,31 @@ function addToCollection(book) {
     bookCollection.push(book);
 };
 
+function addToBookPanel(book) {
+    let newBookCard = document.createElement("div");
+    newBookCard.className = "book-card";
+    newBookCard.setAttribute("data-indexnumber", `${(bookCollection.length - 1)}`);
+
+    let bookCardTitle = document.createElement("p");
+    bookCardTitle.className = "book-title";
+
+    let bookCardAuthor = document.createElement("P");
+    bookCardAuthor.className = "book-author";
+
+    let removeBookBtn = document.createElement("img");
+    removeBookBtn.className = "remove-book-icon";
+    removeBookBtn.title = "Remove from library";
+    removeBookBtn.addEventListener('click', removeBook);
+
+    bookCardTitle.textContent = book.title;
+    bookCardAuthor.textContent = book.author;
+
+    newBookCard.appendChild(bookCardTitle);
+    newBookCard.appendChild(bookCardAuthor);
+    newBookCard.appendChild(removeBookBtn);
+    booksPanel.appendChild(newBookCard);
+};
+
 function removeBook(evt) {
     let parentElem = evt.target.parentElement;
     let bookIndex = parentElem.dataset.indexnumber;
@@ -128,3 +153,21 @@ function printTarget(evt) {
 addBookBtn.addEventListener('click', showAddBookForm);
 closeFormBtn.addEventListener('click', hideAddBookForm);
 
+
+addBookForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let formData = new FormData(addBookForm);
+    //let newBook = new Book('', '', 0, false);
+    let newBookEntries = [];
+    for(let dataEntry of formData.entries()) {
+        console.log(dataEntry);
+        newBookEntries.push(dataEntry[1]);
+    };
+    createNewBook(newBookEntries);
+});
+
+function createNewBook(newBookInfo) {
+    let newBook = new Book(newBookInfo[0], newBookInfo[1], newBookInfo[2], newBookInfo[3]);
+    addToCollection(newBook);
+    addToBookPanel(newBook);
+};
