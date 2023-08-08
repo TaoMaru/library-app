@@ -43,10 +43,10 @@ function removeFromBookPanel(bookElem) {
 function removeFromCollection(indexToRemove) {
     let newCollection = [];
     console.log(`index of removed book: ${indexToRemove}`);
-    if(indexToRemove === 0){
-        for(let i = 0; i < bookCollection.length; i++){
+    if(indexToRemove == 0){
+        for(let i = 0; i < bookCollection.length - 1; i++){
             console.log(bookCollection[i]);
-            newCollection[i] = bookCollection[i];
+            newCollection[i] = bookCollection[i + 1];
             console.log(newCollection);
         };
     }else{
