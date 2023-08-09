@@ -57,41 +57,12 @@ function removeBook(evt) {
 };
 
 function removeFromBookPanel(bookElem) {
-    console.log(bookElem);
     booksPanel.removeChild(bookElem);
-    let currBooks = document.querySelectorAll('.book-card');
-    currBooks.forEach((book) => {
-        console.log(book);
-    });
 };
 
 function removeFromCollection(indexToRemove) {
-    let newCollection = [];
     console.log(`index of removed book: ${indexToRemove}`);
-    if(indexToRemove == 0){
-        for(let i = 0; i < bookCollection.length - 1; i++){
-            console.log(bookCollection[i]);
-            newCollection[i] = bookCollection[i + 1];
-            console.log(newCollection);
-        };
-    }else{
-        for(let i = 0; i < indexToRemove; i++){
-            console.log(bookCollection[i]);
-            newCollection[i] = bookCollection[i];
-            console.log(newCollection);
-        };
-        for(let i = indexToRemove + 1; i < bookCollection.length; i++){
-            newCollection[i - 1] = bookCollection[i];
-            console.log(bookCollection[i]);
-        };
-    };
-
-    bookCollection.length = newCollection.length;
-    console.log(`length of new array: ${bookCollection.length}`);
-    for(let i = 0; i < bookCollection.length; i++){
-        bookCollection[i] = newCollection[i];
-    };
-    console.log(bookCollection);
+    bookCollection.splice(indexToRemove, 1);
 };
 
 function assignIndexNumber() {
@@ -103,7 +74,7 @@ function assignIndexNumber() {
     });
 };
 
-/*
+
 let book1 = new Book('A Wonderful Age', 'Bernard Tressel', 455, false);
 let book2 = new Book('Eleven Hands', 'Sarah Wylde', 123, false);
 let book3 = new Book('The Hand of Nostradamus', 'Phillip Green', 730, false);
@@ -138,7 +109,7 @@ for(let i = 0; i < bookCollection.length; i++){
     newBookCard.appendChild(removeBookBtn);
     booksPanel.appendChild(newBookCard);
 };
-*/
+
 
 function showAddBookForm() {
     addBookForm.classList.remove("add-book-hidden-form");
